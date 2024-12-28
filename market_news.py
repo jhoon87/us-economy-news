@@ -79,7 +79,7 @@ def scrape_news():
         url = f"https://news.google.com/rss/search?q={term}&hl=en-US&gl=US&ceid=US:en"
         try:
             response = requests.get(url, headers=headers)
-            soup = BeautifulSoup(response.content, "xml")
+            soup = BeautifulSoup(response.content, "lxml-xml")
             
             for item in soup.find_all("item"):
                 # 게시일 확인 - 48시간 이내의 뉴스 수집
