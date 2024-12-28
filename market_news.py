@@ -81,7 +81,7 @@ def scrape_news():
             response = requests.get(url, headers=headers)
             soup = BeautifulSoup(response.content, "lxml-xml")
             
-            for item in soup.find_all("item"):
+            for item in soup.find_all("item")[:7]:  # 각 키워드당 7개만 수집
                 # 게시일 확인 - 48시간 이내의 뉴스 수집
                 pub_date = item.pubDate.text if item.pubDate else ""
                 if pub_date:
